@@ -62,10 +62,22 @@ public class MinStack implements Stack{
         return headNode.getData();
     }
 
+    @Override
+    public String stackVariables() {
+        Node node = headNode;
+        final StringBuilder stringBuilder = new StringBuilder();
+        while(node != null) {
+            stringBuilder.append(node.getData().toString() + '\t');
+            node = node.getPreviousNode();
+        }
+        return stringBuilder.toString();
+    }
+
     public int min() {
         return (int) minStack.peek();
     }
 
+    @Override
     public int size() {
         return size;
     }

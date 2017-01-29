@@ -11,12 +11,6 @@ public interface Stack {
     public Object pop();
     public void push(final Object object) throws Exception;
     public Object peek();
-
-    public default void printStack() {
-        Node node = headNode;
-        while(node != null) {
-            System.out.println(node.getData().toString());
-            node = node.getPreviousNode();
-        }
-    }
+    public int size();
+    public String stackVariables();
 }

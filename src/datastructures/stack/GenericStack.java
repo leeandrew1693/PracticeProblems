@@ -47,7 +47,19 @@ public class GenericStack implements Stack {
         headNode = node;
     }
 
+    @Override
     public int size() {
         return this.size;
+    }
+
+    @Override
+    public String stackVariables() {
+        Node node = headNode;
+        final StringBuilder stringBuilder = new StringBuilder();
+        while(node != null) {
+            stringBuilder.append(node.getData().toString() + '\t');
+            node = node.getPreviousNode();
+        }
+        return stringBuilder.toString();
     }
 }
