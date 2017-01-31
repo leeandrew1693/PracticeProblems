@@ -1,26 +1,26 @@
-package common;
+package datastructures.stack.common;
 
 /**
  * Created by andrew on 1/27/17.
  */
-public class Node<E> {
-    private Node previousNode;
+public class StackNode<E> {
+    private StackNode previousNode;
     private E data;
 
-    public Node(final E data) {
+    public StackNode(final E data) {
         this.data = data;
     }
 
-    public Node(final E data, final Node previousNode) {
+    public StackNode(final E data, final StackNode previousNode) {
         this.data = data;
         this.previousNode = previousNode;
     }
 
-    public Node getPreviousNode() {
+    public StackNode getPreviousNode() {
         return previousNode;
     }
 
-    public void setPreviousNode(final Node node) {
+    public void setPreviousNode(final StackNode node) {
         previousNode = node;
     }
 

@@ -1,12 +1,12 @@
-package datastructures.stack;
+package datastructures.stack.common;
 
-import common.Node;
+import datastructures.stack.common.StackNode;
 
 /**
  * Created by andrew on 1/28/17.
  */
 public interface Stack {
-    Node headNode = null;
+    StackNode headNode = null;
 
     public Object pop();
     public void push(final Object object) throws Exception;

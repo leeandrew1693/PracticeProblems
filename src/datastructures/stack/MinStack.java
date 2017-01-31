@@ -1,12 +1,13 @@
 package datastructures.stack;
 
-import common.Node;
+import datastructures.stack.common.Stack;
+import datastructures.stack.common.StackNode;
 
 /**
  * Stack with min retrieval time of O(1)
  */
-public class MinStack implements Stack{
-    protected Node headNode;
+public class MinStack implements Stack {
+    protected StackNode headNode;
     private int size = 0;
 
     private GenericStack minStack;
@@ -19,7 +20,7 @@ public class MinStack implements Stack{
 
     public MinStack(final int value) {
         this.size = 1;
-        this.headNode = new Node(value);
+        this.headNode = new StackNode(value);
         minStack = new GenericStack(value);
     }
 
@@ -30,7 +31,7 @@ public class MinStack implements Stack{
         }
 
         size--;
-        final Node currentNode = headNode;
+        final StackNode currentNode = headNode;
         headNode = headNode.getPreviousNode();
 
         if((int) currentNode.getData() == (int) minStack.peek()) {
@@ -48,7 +49,7 @@ public class MinStack implements Stack{
         }
 
         final int value =  (int) object;
-        final Node node = new Node(value);
+        final StackNode node = new StackNode(value);
         node.setPreviousNode(headNode);
         headNode = node;
 
@@ -64,7 +65,7 @@ public class MinStack implements Stack{
 
     @Override
     public String stackVariables() {
-        Node node = headNode;
+        StackNode node = headNode;
         final StringBuilder stringBuilder = new StringBuilder();
         while(node != null) {
             stringBuilder.append(node.getData().toString() + '\t');

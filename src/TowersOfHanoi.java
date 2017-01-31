@@ -1,5 +1,5 @@
 import datastructures.stack.MinStack;
-import datastructures.stack.Stack;
+import datastructures.stack.common.Stack;
 import util.Timer;
 
 import java.util.concurrent.Callable;

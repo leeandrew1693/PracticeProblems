@@ -1,12 +1,13 @@
 package datastructures.stack;
 
-import common.Node;
+import datastructures.stack.common.Stack;
+import datastructures.stack.common.StackNode;
 
 /**
  * Created by andrew on 1/27/17.
  */
 public class GenericStack implements Stack {
-    protected Node headNode;
+    protected StackNode headNode;
     private int size = 0;
 
     public GenericStack() {
@@ -15,10 +16,10 @@ public class GenericStack implements Stack {
 
     public GenericStack(final Object object) {
         this.size = 1;
-        this.headNode = new Node(object);
+        this.headNode = new StackNode(object);
     }
 
-    public GenericStack(final Node headNode) {
+    public GenericStack(final StackNode headNode) {
         this.size = 1;
         this.headNode = headNode;
     }
@@ -34,7 +35,7 @@ public class GenericStack implements Stack {
             return null;
         }
         size--;
-        final Node currentNode = headNode;
+        final StackNode currentNode = headNode;
         headNode = headNode.getPreviousNode();
         return currentNode.getData();
     }
@@ -42,7 +43,7 @@ public class GenericStack implements Stack {
     @Override
     public void push(final Object object) {
         size++;
-        final Node node = new Node(object);
+        final StackNode node = new StackNode(object);
         node.setPreviousNode(headNode);
         headNode = node;
     }
@@ -54,7 +55,7 @@ public class GenericStack implements Stack {
 
     @Override
     public String stackVariables() {
-        Node node = headNode;
+        StackNode node = headNode;
         final StringBuilder stringBuilder = new StringBuilder();
         while(node != null) {
             stringBuilder.append(node.getData().toString() + '\t');
