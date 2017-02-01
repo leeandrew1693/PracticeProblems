@@ -42,6 +42,7 @@ public class BinaryTreeNode {
     }
 
 
+
     public void print(String prefix, boolean isTail) {
         int numChildren =0;
         if(leftChild != null) {

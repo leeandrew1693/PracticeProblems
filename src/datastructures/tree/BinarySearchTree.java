@@ -21,6 +21,7 @@ public class BinarySearchTree implements BinaryTree{
     public void addChild(final int childValue) {
         addChildRecursive(childValue);
 //        addChildIterative(childValue);
+        printTree();
     }
 
     private void addChildRecursive(final int childValue) {
@@ -79,9 +80,23 @@ public class BinarySearchTree implements BinaryTree{
         else if(removeValue > currentNode.getValue())
             currentNode.setRightChild(removeNode(currentNode.getRightChild(), removeValue));
         else if( currentNode.getLeftChild() != null && currentNode.getRightChild() != null ) {
-            BinaryTreeNode rightMostNode = getRightMostNode(currentNode.getLeftChild());
-            rightMostNode.setRightChild(currentNode.getRightChild());
-            currentNode = currentNode.getLeftChild();
+            BinaryTreeNode thisNode = currentNode.getRightChild();
+            if(thisNode.getLeftChild() == null) {
+                currentNode = thisNode;
+            }  else {
+                do {
+                    if(thisNode.getLeftChild().getLeftChild() == null) {
+                        BinaryTreeNode replacementNode = thisNode.getLeftChild();
+                        thisNode.setLeftChild(null);
+                        replacementNode.setLeftChild(currentNode.getLeftChild());
+                        replacementNode.setRightChild(currentNode.getRightChild());
+                        currentNode = replacementNode;
+                        break;
+                    } else {
+                        thisNode= thisNode.getLeftChild();
+                    }
+                } while(true);
+            }
         } else {
             currentNode = (currentNode.getLeftChild() != null) ? currentNode.getLeftChild() : currentNode.getRightChild();
         }
@@ -89,25 +104,6 @@ public class BinarySearchTree implements BinaryTree{
         return currentNode;
     }
 
-    private BinaryTreeNode getRightMostNode(final BinaryTreeNode node) {
-        BinaryTreeNode currentNode = node;
-        do {
-            if(currentNode.getRightChild() == null) {
-                return currentNode;
-            } else {
-                currentNode = currentNode.getRightChild();
-            }
-        } while(true);
-    }
-
-    private void replaceChild(final BinaryTreeNode parentNode, final BinaryTreeNode removeNode, final BinaryTreeNode replacementNode) {
-        if(parentNode.getLeftChild() == removeNode) {
-            parentNode.setLeftChild(replacementNode);
-        } else {
-            parentNode.setRightChild(replacementNode);
-        }
-
-    }
 
     @Override
     public BinaryTreeNode find(final int value) throws Exception {

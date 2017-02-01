@@ -41,6 +41,27 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void removeNode2Test() throws Exception {
+        binarySearchTree.addChild(10);
+        binarySearchTree.addChild(5);
+        binarySearchTree.addChild(15);
+        binarySearchTree.addChild(3);
+        binarySearchTree.addChild(7);
+        binarySearchTree.addChild(13);
+        binarySearchTree.addChild(17);
+        binarySearchTree.addChild(2);
+        binarySearchTree.addChild(4);
+        binarySearchTree.addChild(6);
+        binarySearchTree.addChild(8);
+        binarySearchTree.addChild(12);
+        binarySearchTree.addChild(14);
+        binarySearchTree.addChild(16);
+        binarySearchTree.addChild(18);
+
+        binarySearchTree.removeNode(5);
+    }
+
+    @Test
     public void removeNodeRootNodeTest() throws Exception {
         binarySearchTree.addChild(10);
         binarySearchTree.addChild(5);
@@ -51,11 +72,9 @@ public class BinarySearchTreeTest {
         binarySearchTree.addChild(17);
         binarySearchTree.removeNode(10);
         binarySearchTree.printTree();
-        assertEquals(5, binarySearchTree.headNode.getValue());
-        assertEquals(3, binarySearchTree.headNode.getLeftChild().getValue());
-        assertEquals(7, binarySearchTree.headNode.getRightChild().getValue());
-        assertEquals(15, binarySearchTree.headNode.getRightChild().getRightChild().getValue());
-
+        assertEquals(13, binarySearchTree.headNode.getValue());
+        assertEquals(5, binarySearchTree.headNode.getLeftChild().getValue());
+        assertEquals(15, binarySearchTree.headNode.getRightChild().getValue());
     }
 
 }
