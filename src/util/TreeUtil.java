@@ -1,15 +1,31 @@
 package util;
 
+import datastructures.tree.common.BinaryTree;
 import datastructures.tree.common.BinaryTreeNode;
 
 /**
  * Created by andrew on 2/1/17.
  */
 public class TreeUtil {
+
+    public static int getHeight(final BinaryTree tree) {
+        return getHeight(tree.getRootNode());
+    }
+    /**
+     * Get the height of a given node
+     * @param node
+     * @return
+     */
     public static int getHeight(final BinaryTreeNode node) {
         return getHeight(node,1);
     }
 
+    /**
+     * Helper/Recursive method to get height
+     * @param node - Current node
+     * @param curDepth - Current Depth
+     * @return
+     */
     private static int getHeight(final BinaryTreeNode node, int curDepth) {
         int a = curDepth;
         int b = curDepth;
@@ -27,6 +43,11 @@ public class TreeUtil {
         return (a>b?a:b);
     }
 
+    /**
+     * Check if a tree is height balanced
+     * @param node - Root node
+     * @return - Whether or not its balanced
+     */
     public static boolean isBalanced(final BinaryTreeNode node) {
         if(node == null) {
             return true;
@@ -44,19 +65,48 @@ public class TreeUtil {
         return false;
     }
 
+    /**
+     * Rotate to the right.
+     * (Diagram from geeksforgeeks.org)
+     *          z                                      y
+     *         / \                                   /   \
+     *       y   T4      Right Rotate (z)          x      z
+     *      / \          - - - - - - - - ->      /  \    /  \
+     *     x   T3                               T1  T2  T3  T4
+     *    / \
+     *  T1   T2
+     *
+     * @param rotate
+     * @return
+     */
     public static BinaryTreeNode rightRotate(final BinaryTreeNode rotate) {
         //left child takes nodes place
         //node becomes right child
         // left child's right child becomes nodes left cild
-        final BinaryTreeNode leftChild = rotate.getLeftChild();
+        final BinaryTreeNode newHead = rotate.getLeftChild();
         final BinaryTreeNode leftChildRightChild;
-        leftChildRightChild = leftChild.getRightChild();
+        leftChildRightChild = newHead.getRightChild();
         rotate.setLeftChild(leftChildRightChild);
-        leftChild.setRightChild(rotate);
+        newHead.setRightChild(rotate);
 
-        return leftChild;
+        return newHead;
     }
 
+    /**
+     * Rotate to the left
+     * (Diagram from geeksforgeeks.org)
+     *    z                                y
+     *   /  \                            /   \
+     *  T1   y     Left Rotate(z)       z      x
+     *     /  \   - - - - - - - ->    / \    / \
+     *    T2   x                     T1  T2 T3  T4
+     *        / \
+     *       T3  T4
+     *
+     *       return y
+     * @param rotate
+     * @return
+     */
     public static BinaryTreeNode leftRotate(final BinaryTreeNode rotate) {
         //Right child takes nodes place
         // Node bcomes left child
@@ -70,6 +120,12 @@ public class TreeUtil {
         return rightChild;
     }
 
+    /**
+     * Get the bottom left node from a given node.
+     *
+     * @param node - Starting node
+     * @return - Bottom left node
+     */
     public static BinaryTreeNode getLeftMostNode(final BinaryTreeNode node) {
         BinaryTreeNode currentNode = node;
         do {
@@ -81,6 +137,11 @@ public class TreeUtil {
         } while(true);
     }
 
+    /**
+     * Get the bottom right node from a given node
+     * @param node
+     * @return
+     */
     public static BinaryTreeNode getRightMostNode(final BinaryTreeNode node) {
         BinaryTreeNode currentNode = node;
         do {
@@ -98,6 +159,5 @@ public class TreeUtil {
         } else {
             parentNode.setRightChild(replacementNode);
         }
-
     }
 }

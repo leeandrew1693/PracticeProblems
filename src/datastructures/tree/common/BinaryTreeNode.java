@@ -9,6 +9,10 @@ public class BinaryTreeNode {
 
     int value;
 
+    public BinaryTreeNode() {
+
+    }
+
     public BinaryTreeNode getLeftChild() {
         return leftChild;
     }
@@ -41,7 +45,10 @@ public class BinaryTreeNode {
 
     }
 
-
+    public void print() {
+        print("", true);
+        System.out.println("");
+    }
 
     public void print(String prefix, boolean isTail) {
         int numChildren =0;

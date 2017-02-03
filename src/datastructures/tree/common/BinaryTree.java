@@ -9,6 +9,9 @@ public interface BinaryTree {
     public void addChild(final int value);
     public void removeNode(final int value) throws Exception;
     public BinaryTreeNode find(final int value) throws Exception;
+    public BinaryTreeNode getRootNode();
+    public void setRootNode(final BinaryTreeNode root);
     public int getHeight();
+    public void printTree();
 
 }

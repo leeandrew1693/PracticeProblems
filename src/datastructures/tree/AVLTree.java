@@ -23,6 +23,11 @@ public class AVLTree extends BinarySearchTree {
     }
 
     @Override
+    public BinaryTreeNode getRootNode() {
+        return headNode;
+    }
+
+    @Override
     public void removeNode(final int removeValue) throws Exception {
         headNode = removeNode(headNode, removeValue);
     }
@@ -77,7 +82,6 @@ public class AVLTree extends BinarySearchTree {
     @Override
     public void addChild(final int childValue) {
         headNode = addChild(headNode, childValue);
-        printTree();
     }
 
     private BinaryTreeNode addChild(final BinaryTreeNode node, final int childValue) {
@@ -122,5 +126,15 @@ public class AVLTree extends BinarySearchTree {
         binarySearchTree.addChild(1);
         System.out.println("Max Depth: " + binarySearchTree.getHeight() + '\n');
         binarySearchTree.printTree();
+    }
+
+    @Override
+    public void printTree() {
+        headNode.print("", true);
+    }
+
+    @Override
+    public void setRootNode(final BinaryTreeNode rootNode) {
+        this.headNode = rootNode;
     }
 }

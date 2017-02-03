@@ -17,11 +17,16 @@ public class BinarySearchTree implements BinaryTree{
         headNode = new BinaryTreeNode(value);
     }
 
-    @Override
+    public BinarySearchTree(final BinaryTreeNode node) {
+        headNode = node;
+    }
+
+
+        @Override
     public void addChild(final int childValue) {
         addChildRecursive(childValue);
 //        addChildIterative(childValue);
-        printTree();
+//        printTree();
     }
 
     private void addChildRecursive(final int childValue) {
@@ -128,6 +133,11 @@ public class BinarySearchTree implements BinaryTree{
         } while(true);
     }
 
+    @Override
+    public BinaryTreeNode getRootNode() {
+        return headNode;
+    }
+
     public static void main (final String args[] ) throws Exception {
         BinarySearchTree binarySearchTree = new BinarySearchTree(5);
         binarySearchTree.addChild(3);
@@ -180,7 +190,14 @@ public class BinarySearchTree implements BinaryTree{
         return (a>b?a:b);
     }
 
+    @Override
+    public void setRootNode(final BinaryTreeNode rootNode) {
+        this.headNode = rootNode;
+    }
+
+    @Override
     public void printTree() {
         headNode.print("", true);
+        System.out.println("");
     }
 }
