@@ -19,4 +19,15 @@ public class AbstractTreeTest {
         binaryTree.removeNode(value);
         Assert.assertEquals(true, TreeUtil.isBalanced(binaryTree.headNode));
     }
+
+    protected void createTreeWithNodes(final int numNodes) {
+        for(int i = 0; i < numNodes; i ++) {
+            addChild((int)(Math.random() * 10000));
+        }
+    }
+    protected void createSequentialTreeWithNodes(final int numNodes) {
+        for(int i = 0; i < numNodes; i ++) {
+            addChild(i);
+        }
+    }
 }

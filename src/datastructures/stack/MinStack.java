@@ -82,4 +82,9 @@ public class MinStack implements Stack {
     public int size() {
         return size;
     }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0 ? true : false;
+    }
 }

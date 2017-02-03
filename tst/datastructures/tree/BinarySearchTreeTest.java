@@ -1,5 +1,6 @@
 package datastructures.tree;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -77,5 +78,15 @@ public class BinarySearchTreeTest extends  AbstractTreeTest{
         assertEquals(5, binaryTree.getRootNode().getLeftChild().getValue());
         assertEquals(15, binaryTree.getRootNode().getRightChild().getValue());
     }
+
+    @Test
+    public void testFind() throws Exception {
+        final int numIterations = 10;
+        createSequentialTreeWithNodes(numIterations);
+        for(int i =0; i < numIterations; i++ ) {
+            Assert.assertEquals(i, binaryTree.find(i).getValue());
+        }
+    }
+
 
 }

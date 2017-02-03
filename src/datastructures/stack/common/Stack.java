@@ -13,4 +13,5 @@ public interface Stack {
     public Object peek();
     public int size();
     public String stackVariables();
+    public boolean isEmpty();
 }

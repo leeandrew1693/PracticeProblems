@@ -13,5 +13,4 @@ public interface BinaryTree {
     public void setRootNode(final BinaryTreeNode root);
     public int getHeight();
     public void printTree();
-
 }

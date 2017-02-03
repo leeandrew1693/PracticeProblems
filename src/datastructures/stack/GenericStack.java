@@ -63,4 +63,9 @@ public class GenericStack implements Stack {
         }
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0 ? true : false;
+    }
 }

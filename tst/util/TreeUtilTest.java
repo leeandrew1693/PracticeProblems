@@ -1,6 +1,8 @@
 package util;
 
+import datastructures.tree.AbstractTreeTest;
 import datastructures.tree.BinarySearchTree;
+import datastructures.tree.algorithms.TraversalAlgorithms;
 import datastructures.tree.common.BinaryTree;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,9 +11,7 @@ import org.junit.Test;
 /**
  * Created by andrew on 2/3/17.
  */
-public class TreeUtilTest {
-    BinaryTree binaryTree;
-
+public class TreeUtilTest extends AbstractTreeTest {
     @Before
     public void setup() {
         binaryTree = new BinarySearchTree();

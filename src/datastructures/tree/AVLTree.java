@@ -14,8 +14,6 @@ public class AVLTree extends BinarySearchTree {
         super(value);
     }
 
-
-
     private int getBalance(final BinaryTreeNode node) {
         final int leftHeight = getHeight(node.getLeftChild(), 1);
         final int rightHeight = getHeight(node.getRightChild(),1);
@@ -126,15 +124,5 @@ public class AVLTree extends BinarySearchTree {
         binarySearchTree.addChild(1);
         System.out.println("Max Depth: " + binarySearchTree.getHeight() + '\n');
         binarySearchTree.printTree();
-    }
-
-    @Override
-    public void printTree() {
-        headNode.print("", true);
-    }
-
-    @Override
-    public void setRootNode(final BinaryTreeNode rootNode) {
-        this.headNode = rootNode;
     }
 }

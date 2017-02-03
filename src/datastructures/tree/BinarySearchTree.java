@@ -1,5 +1,8 @@
 package datastructures.tree;
 
+import com.sun.tools.javac.jvm.Gen;
+import datastructures.stack.GenericStack;
+import datastructures.stack.common.Stack;
 import datastructures.tree.common.BinaryTree;
 import datastructures.tree.common.BinaryTreeNode;
 
@@ -112,26 +115,28 @@ public class BinarySearchTree implements BinaryTree{
 
     @Override
     public BinaryTreeNode find(final int value) throws Exception {
-        BinaryTreeNode currentNode = headNode;
-        do{
-            if(currentNode.getValue() == value) {
-                return currentNode;
-
-            } else if(currentNode.getValue() < value) {
-                if(currentNode.getRightChild() != null) {
-                    currentNode = currentNode.getRightChild();
-                } else {
-                    throw new Exception("There was no node with that value");
-                }
-            } else {
-                if(currentNode.getLeftChild() != null) {
-                    currentNode = currentNode.getLeftChild();
-                } else {
-                    throw new Exception("There was no node with that value");
-                }
-            }
-        } while(true);
+        return dfsFind(value);
     }
+
+    private BinaryTreeNode dfsFind(final int value) throws Exception{
+        Stack stack = new GenericStack();
+        BinaryTreeNode binaryTreeNode = headNode;
+        while(binaryTreeNode != null) {
+            if(binaryTreeNode.getValue() == value) {
+                return binaryTreeNode;
+            }
+            if(binaryTreeNode.getLeftChild() != null) {
+                stack.push(binaryTreeNode.getLeftChild());
+            }
+            if(binaryTreeNode.getRightChild() != null) {
+                stack.push(binaryTreeNode.getRightChild());
+            }
+            binaryTreeNode = (BinaryTreeNode) stack.pop();
+        }
+        return null;
+    }
+
+
 
     @Override
     public BinaryTreeNode getRootNode() {
