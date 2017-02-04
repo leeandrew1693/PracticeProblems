@@ -1,5 +1,7 @@
 package datastructures.tree.algorithms;
 
+import datastructures.queue.Queue;
+import datastructures.queue.GenericQueue;
 import datastructures.stack.GenericStack;
 import datastructures.stack.common.Stack;
 import datastructures.tree.common.BinaryTree;
@@ -9,6 +11,43 @@ import datastructures.tree.common.BinaryTreeNode;
  * Created by andrew on 2/3/17.
  */
 public class TraversalAlgorithms {
+    public static void dfsTraversal(final BinaryTree binaryTree) throws Exception {
+        Stack stack = new GenericStack();
+        BinaryTreeNode binaryTreeNode = binaryTree.getRootNode();
+        while(binaryTreeNode != null) {
+            System.out.println(binaryTreeNode.getValue());
+
+            if(binaryTreeNode.getRightChild() != null) {
+                stack.push(binaryTreeNode.getRightChild());
+            }
+
+            if(binaryTreeNode.getLeftChild() != null) {
+                stack.push(binaryTreeNode.getLeftChild());
+            }
+            binaryTreeNode = (BinaryTreeNode) stack.pop();
+        }
+    }
+
+    public static void bfsTraversal(final BinaryTree binaryTree) throws Exception {
+        Queue queue = new GenericQueue();
+        BinaryTreeNode binaryTreeNode = binaryTree.getRootNode();
+        while(binaryTreeNode != null) {
+            System.out.println(binaryTreeNode.getValue());
+
+            if(binaryTreeNode.getLeftChild() != null) {
+                queue.enqueue(binaryTreeNode.getLeftChild());
+            }
+
+            if(binaryTreeNode.getRightChild() != null) {
+                queue.enqueue(binaryTreeNode.getRightChild());
+            }
+
+            binaryTreeNode = (BinaryTreeNode) queue.dequeue();
+        }
+
+    }
+
+
     public static void inOrderTraversal(final BinaryTree binaryTree) throws Exception {
 //        inOrderTraversal(binaryTree.getRootNode());
         inOrderTraversalIterative(binaryTree);

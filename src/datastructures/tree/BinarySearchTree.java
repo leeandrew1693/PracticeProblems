@@ -125,11 +125,11 @@ public class BinarySearchTree implements BinaryTree{
             if(binaryTreeNode.getValue() == value) {
                 return binaryTreeNode;
             }
-            if(binaryTreeNode.getLeftChild() != null) {
-                stack.push(binaryTreeNode.getLeftChild());
-            }
             if(binaryTreeNode.getRightChild() != null) {
                 stack.push(binaryTreeNode.getRightChild());
+            }
+            if(binaryTreeNode.getLeftChild() != null) {
+                stack.push(binaryTreeNode.getLeftChild());
             }
             binaryTreeNode = (BinaryTreeNode) stack.pop();
         }

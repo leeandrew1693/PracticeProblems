@@ -6,7 +6,7 @@ import datastructures.stack.common.StackNode;
 /**
  * Stack with min retrieval time of O(1)
  */
-public class MinStack implements Stack {
+public class MinStack extends  GenericStack {
     protected StackNode headNode;
     private int size = 0;
 
@@ -58,33 +58,7 @@ public class MinStack implements Stack {
         }
     }
 
-    @Override
-    public Object peek() {
-        return headNode.getData();
-    }
-
-    @Override
-    public String stackVariables() {
-        StackNode node = headNode;
-        final StringBuilder stringBuilder = new StringBuilder();
-        while(node != null) {
-            stringBuilder.append(node.getData().toString() + '\t');
-            node = node.getPreviousNode();
-        }
-        return stringBuilder.toString();
-    }
-
     public int min() {
         return (int) minStack.peek();
-    }
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0 ? true : false;
     }
 }

@@ -17,13 +17,13 @@ public class GenericStackTest {
     }
 
     @Test
-    public void testStackPop() {
+    public void testStackPop() throws Exception {
         genericStack.push("someObject");
         assertEquals("someObject", genericStack.pop());
     }
 
     @Test
-    public void testStackPush() {
+    public void testStackPush() throws Exception {
         genericStack.push(1);
         assertEquals(1, genericStack.peek());
         genericStack.push(false);
@@ -33,7 +33,7 @@ public class GenericStackTest {
     }
 
     @Test
-    public void testSize() {
+    public void testSize() throws Exception {
         genericStack.push(1);
         genericStack.push(1);
         genericStack.push(1);

@@ -41,7 +41,7 @@ public class GenericStack implements Stack {
     }
 
     @Override
-    public void push(final Object object) {
+    public void push(final Object object) throws Exception {
         size++;
         final StackNode node = new StackNode(object);
         node.setPreviousNode(headNode);

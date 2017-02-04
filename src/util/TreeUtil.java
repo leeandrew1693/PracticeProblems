@@ -7,10 +7,10 @@ import datastructures.tree.common.BinaryTreeNode;
  * Created by andrew on 2/1/17.
  */
 public class TreeUtil {
-
     public static int getHeight(final BinaryTree tree) {
         return getHeight(tree.getRootNode());
     }
+
     /**
      * Get the height of a given node
      * @param node
