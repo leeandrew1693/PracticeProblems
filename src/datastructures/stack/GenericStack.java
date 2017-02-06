@@ -8,10 +8,9 @@ import datastructures.stack.common.StackNode;
  */
 public class GenericStack implements Stack {
     protected StackNode headNode;
-    private int size = 0;
+    protected int size = 0;
 
-    public GenericStack() {
-        this.headNode = null;
+    public GenericStack() { this.headNode = null;
     }
 
     public GenericStack(final Object object) {
@@ -41,7 +40,7 @@ public class GenericStack implements Stack {
     }
 
     @Override
-    public void push(final Object object) throws Exception {
+    public void push(final Object object) {
         size++;
         final StackNode node = new StackNode(object);
         node.setPreviousNode(headNode);

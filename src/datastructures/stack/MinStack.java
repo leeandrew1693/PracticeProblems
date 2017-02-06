@@ -7,9 +7,6 @@ import datastructures.stack.common.StackNode;
  * Stack with min retrieval time of O(1)
  */
 public class MinStack extends  GenericStack {
-    protected StackNode headNode;
-    private int size = 0;
-
     private GenericStack minStack;
 
     public MinStack() {
@@ -42,10 +39,10 @@ public class MinStack extends  GenericStack {
     }
 
     @Override
-    public void push(final Object object) throws Exception {
+    public void push(final Object object) {
         size++;
         if(!(object instanceof  Integer) || object == null) {
-            throw new Exception("Invalid input. Value must be int");
+            System.out.println("Hey you can't add non integers");
         }
 
         final int value =  (int) object;

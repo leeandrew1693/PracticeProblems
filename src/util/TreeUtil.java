@@ -1,12 +1,112 @@
 package util;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import datastructures.stack.GenericStack;
+import datastructures.stack.common.Stack;
 import datastructures.tree.common.BinaryTree;
 import datastructures.tree.common.BinaryTreeNode;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by andrew on 2/1/17.
  */
 public class TreeUtil {
+
+    public static BinaryTreeNode findAncestorOptimized(final int a, final int b, final BinaryTreeNode currentNode) {
+        if(currentNode == null) {
+            return null;
+        }
+        if(currentNode.getValue() == a || currentNode.getValue() == b) {
+            return currentNode;
+        }
+
+        final BinaryTreeNode leftSubtreeAncestor = findAncestorOptimized(a, b, currentNode.getLeftChild());
+        final BinaryTreeNode rightSubtreeAncestor = findAncestorOptimized(a, b, currentNode.getRightChild());
+
+        if(leftSubtreeAncestor == null) {
+            if(rightSubtreeAncestor == null) {
+                return null;
+            } else {
+                return rightSubtreeAncestor;
+            }
+        } else {
+            if(rightSubtreeAncestor != null) {
+                return currentNode;
+            } else {
+                return leftSubtreeAncestor;
+            }
+        }
+    }
+
+    public static BinaryTreeNode findAncestor (final int a, final int b, final BinaryTreeNode currentNode) {
+        if(!doesCover(a, currentNode) || !doesCover(b, currentNode)) {
+            return null;
+        }
+        return findAncestorHelper(a, b, currentNode);
+    }
+
+    private static BinaryTreeNode findAncestorHelper(final int a, final int b, final BinaryTreeNode currentNode) {
+        if(currentNode.getValue() == a || currentNode.getValue() == b) {
+            return currentNode;
+        }
+
+        if(doesCover(a, currentNode.getLeftChild()) && doesCover(b, currentNode.getLeftChild())) {
+            return findAncestorHelper(a,b, currentNode.getLeftChild());
+        } else if(doesCover(a, currentNode.getRightChild()) && doesCover(b, currentNode.getRightChild())) {
+            return findAncestorHelper(a,b,currentNode.getRightChild());
+        }  else {
+            return currentNode;
+        }
+    }
+
+    private static boolean doesCover(final int value, final BinaryTreeNode binaryTreeNode) {
+        if(binaryTreeNode == null ) {
+            return false;
+        }
+        if(binaryTreeNode.getValue() == value ) {
+            return true;
+        }
+        return doesCover(value, binaryTreeNode.getLeftChild()) || doesCover(value, binaryTreeNode.getRightChild());
+    }
+
+    public static BinaryTreeNode findCommonAncestor (final int a, final int b, final BinaryTreeNode currentNode, final BinaryTree binaryTree) throws Exception {
+        BinaryTreeNode firstNode = null;
+        List<Integer> listOfValues = ImmutableList.of(a,b);
+
+        if(currentNode == null) {
+            return null;
+        }
+        if(listOfValues.contains(currentNode.getValue())) {
+            return currentNode;
+        }
+        firstNode = findCommonAncestor(a, b, currentNode.getLeftChild(), binaryTree);
+        //If you already found it, lets make sure that the one you found is not the common ancestor
+        if(firstNode != null && checkIfValueExistsInSubtree(listOfValues.get(0), currentNode)) {
+            return currentNode;
+        } else if (firstNode != null && binaryTree.getRootNode() == currentNode ) {
+            return currentNode;
+        }
+
+        firstNode = findCommonAncestor(a, b, currentNode.getLeftChild(), binaryTree);
+        //If you already found it, lets make sure that the one you found is not the common ancestor
+        if(firstNode != null && checkIfValueExistsInSubtree(listOfValues.get(0), currentNode)) {
+            return currentNode;
+        } else if (firstNode != null && binaryTree.getRootNode() == currentNode ) {
+            return currentNode;
+        }
+        return null;
+    }
+
+    private static boolean checkIfValueExistsInSubtree(final int value, final BinaryTreeNode binaryTreeNode) {
+        final boolean left  = binaryTreeNode.getLeftChild() != null? checkIfValueExistsInSubtree(value, binaryTreeNode.getLeftChild()) : false;
+        final boolean right = binaryTreeNode.getRightChild() != null ? checkIfValueExistsInSubtree(value, binaryTreeNode.getRightChild()) : false;
+
+        return left || right;
+    }
+
     public static int getHeight(final BinaryTree tree) {
         return getHeight(tree.getRootNode());
     }

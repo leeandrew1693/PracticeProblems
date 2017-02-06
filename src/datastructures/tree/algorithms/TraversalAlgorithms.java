@@ -61,6 +61,30 @@ public class TraversalAlgorithms {
         }
     }
 
+    public static void postOrderTraversal(final BinaryTree binaryTree) {
+        postOrderTraversal(binaryTree.getRootNode());
+    }
+
+    private static void postOrderTraversal(final BinaryTreeNode binaryTreeNode) {
+        if(binaryTreeNode != null) {
+            postOrderTraversal(binaryTreeNode.getLeftChild());
+            postOrderTraversal(binaryTreeNode.getRightChild());
+            System.out.println(binaryTreeNode.getValue());
+        }
+    }
+
+    public static void preOrderTraversal(final BinaryTree binaryTree) {
+        preOrderTraversal(binaryTree.getRootNode());
+    }
+
+    private static void preOrderTraversal(final BinaryTreeNode binaryTreeNode) {
+        if(binaryTreeNode != null) {
+            System.out.println(binaryTreeNode.getValue());
+            preOrderTraversal(binaryTreeNode.getLeftChild());
+            preOrderTraversal(binaryTreeNode.getRightChild());
+        }
+    }
+
     public static void inOrderTraversalIterative(final BinaryTree binaryTree) throws Exception {
         BinaryTreeNode binaryTreeNode = binaryTree.getRootNode();
         Stack stack = new GenericStack();

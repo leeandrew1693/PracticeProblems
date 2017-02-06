@@ -6,6 +6,7 @@ import datastructures.tree.common.BinaryTreeNode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import util.TreeUtil;
 
 /**
  * Created by andrew on 2/3/17.
@@ -26,6 +27,15 @@ public class TraversalAlgorithmsTest extends AbstractTreeTest{
         }
         Assert.assertEquals(null, TraversalAlgorithms.getNextInOrderNode(binaryTree, binaryTree.find(numNodes)));
     }
+
+    @Test
+    public void testPreOrderTraversal() {
+        createSequentialTreeWithNodes(15);
+        binaryTree = DSWAlgorithm.getBalancedTree(binaryTree);
+        binaryTree.printTree();
+        TraversalAlgorithms.postOrderTraversal(binaryTree);
+    }
+
 
     @Test
     public void testDfsTraversal() throws Exception {

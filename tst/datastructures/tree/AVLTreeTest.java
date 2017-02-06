@@ -32,6 +32,7 @@ public class AVLTreeTest extends AbstractTreeTest{
         for(int i = 1; i< NUM_ITERATIONS; i++) {
             addChild(i);
         }
+
         for(int i =1; i< NUM_ITERATIONS;i++) {
             removeChild(i);
         }
