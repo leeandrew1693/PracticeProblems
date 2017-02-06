@@ -1,7 +1,7 @@
 package datastructures.tree;
 
 import datastructures.tree.common.BinaryTreeNode;
-import util.TreeUtil;
+import datastructures.tree.util.TreeUtil;
 
 /**
  * Created by andrew on 1/29/17.

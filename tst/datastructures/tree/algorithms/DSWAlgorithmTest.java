@@ -6,7 +6,7 @@ import datastructures.tree.common.BinaryTreeNode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import util.TreeUtil;
+import datastructures.tree.util.TreeUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

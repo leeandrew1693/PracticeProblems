@@ -2,7 +2,7 @@ package datastructures.tree;
 
 import datastructures.tree.common.BinaryTree;
 import org.junit.Assert;
-import util.TreeUtil;
+import datastructures.tree.util.TreeUtil;
 
 /**
  * Created by andrew on 2/1/17.

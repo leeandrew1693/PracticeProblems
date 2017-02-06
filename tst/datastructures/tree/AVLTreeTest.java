@@ -3,7 +3,6 @@ package datastructures.tree;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import util.TreeUtil;
 
 /**
  * Created by andrew on 1/31/17.
