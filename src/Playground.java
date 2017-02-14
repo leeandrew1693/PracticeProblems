@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -9,16 +6,89 @@ import java.util.stream.Collectors;
  */
 public class Playground {
     public static void main (final String args[]) {
-        Map<String, String> nameMapping = new HashMap<>();
-        nameMapping.put("Tiffany", "Chiu");
-        nameMapping.put("Andrew", "Lee");
+        Set<String> set =  getPermutations("asdflkj");
+        set.forEach((value) -> {
+            System.out.println(value);
+        });
+    }
 
-        List<String> andrews = new ArrayList<>();
-        for(Map.Entry<String, String> temp : nameMapping.entrySet()) {
-            if(temp.getKey().equals("Andrew")) {
-                andrews.add(temp.getKey());
+    public static Set<String> getPermutations(final String inputString) {
+        final Set<String> outputSet = new HashSet<>();
+        for(int i = 0; i< Math.pow(2, inputString.length()); i++ ){
+            final StringBuilder stringBuilder = new StringBuilder();
+            for(int j =1 ; j <= inputString.length(); j ++) {
+                if(getBinaryForPos(j, i)) {
+                    stringBuilder.append(inputString.charAt(j-1));
+                }
             }
+            outputSet.add(stringBuilder.toString());
+        }
+        return outputSet;
+    }
+
+    private static boolean getBinaryForPos(final int characterPosition, final int num) {
+        if(num ==0 ) {
+            return false;
         }
 
+        final int tempNum = characterPosition -1 == 0 ? num :num/((characterPosition-1) * 2);
+        return tempNum%2 == 1 ? true : false;
+    }
+
+    public static int tripleStep(final int numSteps) {
+        int total = 0;
+        if(numSteps == 0) {
+            return 1;
+        } else if( numSteps < 0) {
+            return 0;
+        }
+
+        total += tripleStep(numSteps-1);
+        total += tripleStep(numSteps-2);
+        total += tripleStep(numSteps-3);
+        return total;
+    }
+
+    public static String robotInGrid(int x, int y, final String steps, final boolean[][] board) {
+        if(x == board[0].length-1 && y == board.length-1) {
+            return steps;
+        }
+
+        if(x > board.length-1 || y > board.length-1) {
+            return null;
+        }
+
+        if(steps == null) {
+            return null;
+        }
+
+        y++;
+        String temp = robotInGrid(x,y,goDown(x, y, steps, board), board);
+        if(temp == null) {
+            y--;
+            x++;
+            temp = robotInGrid(x,y, goRight(x, y, steps, board), board);
+        }
+        return temp;
+    }
+
+    private static String goDown(final int x, final int y, final String steps, final boolean[][] board){
+        if(y> board.length-1) {
+            return null;
+        } else if(board[x][y]) {
+            return null;
+        } else {
+            return steps + " down";
+        }
+    }
+
+    private static String goRight(final int x, final int y, final String steps, final boolean[][] board){
+        if(x> board.length-1) {
+            return null;
+        } else if(board[x][y]) {
+            return null;
+        } else {
+            return steps + " right";
+        }
     }
 }
