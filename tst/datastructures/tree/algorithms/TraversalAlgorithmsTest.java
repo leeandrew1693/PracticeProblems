@@ -53,6 +53,7 @@ public class TraversalAlgorithmsTest extends AbstractTreeTest{
         addChild(16);
         addChild(18);
         binaryTree.printTree();
-        TraversalAlgorithms.bfsTraversal(binaryTree);
+//        TraversalAlgorithms.bfsTraversal(binaryTree);
+//        TraversalAlgorithms.bfsTraversal1(binaryTree);
     }
 }

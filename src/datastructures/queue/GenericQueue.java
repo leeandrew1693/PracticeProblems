@@ -27,7 +27,7 @@ public class GenericQueue implements Queue{
     @Override
     public void enqueue(final Object o) {
         final QueueNode node = new QueueNode(o);
-        if(tail == null) {
+        if(tail == null || head == null) {
             head = node;
             tail = node;
         } else {

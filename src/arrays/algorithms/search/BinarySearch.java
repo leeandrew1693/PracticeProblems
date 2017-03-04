@@ -10,6 +10,7 @@ public class BinarySearch {
     }
 
 
+
     public static int binarySearch(final int[] sortedArray, final int number){
         return binarySearchRecursive(sortedArray, number, 0, sortedArray.length-1);
     }

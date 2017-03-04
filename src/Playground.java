@@ -6,10 +6,31 @@ import java.util.stream.Collectors;
  */
 public class Playground {
     public static void main (final String args[]) {
-        Set<String> set =  getPermutations("asdflkj");
-        set.forEach((value) -> {
-            System.out.println(value);
-        });
+        final Set<String> outputSet = new HashSet<>();
+        String a = "foo"; String b = "food".substring(0,3); String c = b.intern(); System.out.println(a == c);
+
+        String test = "asdf";
+        System.out.println(test.substring(0,3));
+        System.out.println(tryFinally());
+        int x = 1;
+        System.out.println(++x);
+        Map<int[], String> asdf = new HashMap<>();
+        Set<String> set = new HashSet<>();
+        int[] index = {0,0};
+        List<String> list= new ArrayList<>();
+        asdf.put(index, "ASDF");
+        System.out.println(asdf.get(index));
+//        Set<String> set =  getPermutations("asdflkj");
+//        set.forEach((value) -> {
+//            System.out.println(value);
+//        });
+    }
+    public static boolean tryFinally() {
+        try{
+            return true;
+        } finally{
+            return false;
+        }
     }
 
     public static Set<String> getPermutations(final String inputString) {
