@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 public class Playground {
     public static void main (final String args[]) {
         final Set<String> outputSet = new HashSet<>();
-        String a = "foo"; String b = "food".substring(0,3); String c = b.intern(); System.out.println(a == c);
+//        String a = "foo"; String b = "food".substring(0,3); String c = b.intern(); System.out.println(a == c);
+        int[] array = new int[]{1,2,3};
 
+        testModifyArray(array);
+        for(int value : array) {
+            System.out.println(value);
+        }
         String test = "asdf";
         System.out.println(test.substring(0,3));
         System.out.println(tryFinally());
@@ -24,6 +29,9 @@ public class Playground {
 //        set.forEach((value) -> {
 //            System.out.println(value);
 //        });
+    }
+    public static void testModifyArray(int[] array) {
+        array[0] = 100;
     }
     public static boolean tryFinally() {
         try{
