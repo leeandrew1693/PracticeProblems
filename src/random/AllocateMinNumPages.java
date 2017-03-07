@@ -31,13 +31,13 @@ import java.util.concurrent.Callable;
  */
 public class AllocateMinNumPages {
     public static void main(String[] args) throws Exception {
-        int[] books = {73, 58, 30, 72, 44, 78, 23, 9};
+        int[] books = {1,1,1,1,1,1,1,1,10,5,5,5,5,5};
 //        int[] books = {12, 34, 67, 98, 90};
-        int students = 5;
+        int students = 4;
 
 //        Callable onlineAnswer = () -> books(Arrays.asList(books), students);
 //        Timer.time(onlineAnswer);
-//        System.out.println(books(Arrays.asList(books), students));
+        System.out.println(books(books, students));
         System.out.println(getMinPagesPerStudent(books, students));
     }
 
@@ -109,54 +109,50 @@ public class AllocateMinNumPages {
         return max;
     }
 
-    public static int books(List<Integer> A, int B) {
-
-        int students = B;
-        long high = Long.MAX_VALUE;
+    public static int books(int[] listOfBooks, int students) {
         long low = 0;
-        long mid, res = 0;
+        long target, result = 0;
 
-        if (B > A.size())
+        if (students > listOfBooks.length)
             return -1;
 
         long sum = 0;
 
-        for (int pages : A)
+        for (int pages : listOfBooks)
             sum += pages;
+        long high = sum;
 
         while (low <= high) {
-            mid = low + ((high - low) >> 1);
-            System.out.println(String.format("Low: %d Mid: %d High: %d", low, mid, high));
+            target = low + ((high - low) /2);
+            System.out.println(String.format("Low: %d Target: %d High: %d", low, target, high));
 
-            if (isPossible(A, B, mid, sum)) {
-                res = mid;
-                high = mid - 1;
+            if (isPossible(listOfBooks, students, target, sum)) {
+                result = target;
+                high = target - 1;
             } else {
-                low = mid + 1;
+                low = target + 1;
             }
         }
 
-        System.out.println(res);
-        return (int) res;
+        return (int) result;
 
     }
 
-    private static boolean isPossible(List<Integer> A, int B, long maxPage, long totalPages) {
-
-        if (maxPage < totalPages / B)
+    private static boolean isPossible(int[] listOfBooks, int numStudents, long targetPages, long totalPages) {
+        // Target can't be less than average
+        if (targetPages < totalPages / numStudents)
             return false;
 
         int index = 0;
-        int n = A.size();
-        int i;
+        int n = listOfBooks.length;
 
-        for (i = 0; i < B && index < n; i++) {
-            long page = maxPage;
+
+        for (int i = 0; i < numStudents && index < n; i++) {
             long total = 0;
 
-            while (total < maxPage && index < n) {
-                total += A.get(index);
-                if (total > maxPage)
+            while (total < targetPages && index < n) {
+                total += listOfBooks[index];
+                if (total > targetPages)
                     break;
                 index++;
             }
