@@ -1,6 +1,7 @@
 package random;
 
 import arrays.util.Array2DUtil;
+import helper.Position;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,27 +34,6 @@ import java.util.Set;
  * {'X', 'X', 'O', 'O'}
  */
 public class ReplaceOWithX {
-    static class Position {
-        int x;
-        int y;
-
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public int hashCode() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("X:");
-            sb.append(x);
-            sb.append("Y:");
-            sb.append(y);
-
-            return sb.toString().hashCode();
-        }
-    }
-
     public static void main(String[] args) {
 //        char[][] inputMap = new char[][] {{'X','X', 'X'},
 //                {'X', 'O','X'},

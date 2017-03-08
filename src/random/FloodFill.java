@@ -24,7 +24,7 @@ public class FloodFill {
                         {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
                         {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'}};
         Array2DUtil.print2dArray(matrix);
-        matrix = floodFill(matrix, new Position(1, 1), 'O');
+        matrix = floodFill(matrix, new Position(1, 5), 'O');
         Array2DUtil.print2dArray(matrix);
     }
 

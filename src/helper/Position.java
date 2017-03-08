@@ -10,4 +10,15 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public int hashCode() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("X:");
+        sb.append(x);
+        sb.append("Y:");
+        sb.append(y);
+
+        return sb.toString().hashCode();
+    }
 }

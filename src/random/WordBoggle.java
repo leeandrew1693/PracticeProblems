@@ -1,6 +1,7 @@
 package random;
 
 import arrays.util.Array2DUtil;
+import helper.Position;
 
 import java.util.*;
 
@@ -20,15 +21,6 @@ import java.util.*;
  * could be formed from the boggle. If no word can be formed print -1.
  */
 public class WordBoggle {
-    static class Position {
-        int x;
-        int y;
-
-        public Position(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-    }
     public static void main (String[] args) {
         boolean[][] test = new boolean[][] {{false, false, false},
                                             {false, false, false},
