@@ -7,6 +7,6 @@ import datastructures.queue.common.QueueNode;
  */
 public interface Queue {
     public void enqueue(final Object node);
-    public Object dequeue() throws Exception;
+    public Object dequeue();
     public int size();
 }

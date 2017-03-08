@@ -22,7 +22,7 @@ public class QueueFromStack implements Queue{
     }
 
     @Override
-    public Object dequeue() throws Exception {
+    public Object dequeue() {
         if(popStack.size() == 0 && pushStack.size() == 0) {
             return null;
         } else if (popStack.size() == 0 && pushStack.size() > 0) {
