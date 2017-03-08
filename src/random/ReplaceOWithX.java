@@ -1,6 +1,6 @@
 package random;
 
-import arrays.util.ArrayUtil;
+import arrays.util.Array2DUtil;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -78,9 +78,9 @@ public class ReplaceOWithX {
                                         {'X', 'O','X', 'X', 'X', 'X'},
                                         {'X', 'O','X', 'X', 'X', 'X'},
                                         {'X', 'X','X', 'X', 'X', 'X'}};
-        char[][] inputMapForNaive = ArrayUtil.clone2dArray(inputMap);
-        ArrayUtil.print2dArray(inputMap);
-        ArrayUtil.print2dArray(replaceOWithX(inputMap));
+        char[][] inputMapForNaive = Array2DUtil.clone2dArray(inputMap);
+        Array2DUtil.print2dArray(inputMap);
+        Array2DUtil.print2dArray(replaceOWithX(inputMap));
 
     }
 
@@ -153,7 +153,7 @@ public class ReplaceOWithX {
         } else {
             inputArray[pos.y][pos.x] = 'o';
         }
-//        ArrayUtil.print2dArray(inputArray);
+//        Array2DUtil.print2dArray(inputArray);
         return flag;
 
     }

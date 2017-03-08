@@ -1,7 +1,6 @@
 package random;
 
-import arrays.util.ArrayUtil;
-import javafx.geometry.Pos;
+import arrays.util.Array2DUtil;
 
 import java.util.*;
 
@@ -90,7 +89,7 @@ public class WordBoggle {
         List<Position> toVisit = getToVisit(visited, position);
         for(Position pos: toVisit) {
             String nextString = curString + boggle[pos.x][pos.y];
-            boolean[][] nextVisited = ArrayUtil.clone2dArray(visited);
+            boolean[][] nextVisited = Array2DUtil.clone2dArray(visited);
             nextVisited[pos.x][pos.y] = true;
             helper(dictionary, boggle, nextVisited, pos, nextString, maxLength, results);
         }
