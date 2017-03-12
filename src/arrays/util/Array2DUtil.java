@@ -25,6 +25,17 @@ public class Array2DUtil {
         return clone;
     }
 
+    public static void print2dArray(int[][] array) {
+        for(int y = 0; y < array.length; y++ ){
+            for(int x = 0; x < array[0].length; x++ ) {
+                System.out.print(array[y][x] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+
     public static void print2dArray(char[][] array) {
         for(int y = 0; y < array.length; y++ ){
             for(int x = 0; x < array[0].length; x++ ) {

@@ -40,4 +40,13 @@ public class BitManipulation {
 
         return sb.toString();
     }
+
+    public static String convertToBits(int num) {
+        final StringBuilder sb = new StringBuilder();
+        while(num != 0) {
+            sb.insert(0, num%2);
+            num /=2;
+        }
+        return sb.toString();
+    }
 }
